@@ -17,6 +17,7 @@ Route::group(['middleware' => 'auth', 'namespace'=>'App\Http\Controllers\Admin',
     Route::resource('categories','CategoryController');
 });
 Route::resource('categories', 'App\Http\Controllers\Admin\CategoryController');
+Route::resource('products', 'App\Http\Controllers\Admin\ProductController');
 
 Route::get('/','App\Http\Controllers\MainController@index' )->name('index');
 Route::get('/categories','App\Http\Controllers\MainController@categories')->name('categories');

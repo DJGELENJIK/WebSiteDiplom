@@ -71,7 +71,7 @@ return redirect()->route('index');
     }
 
         $product = Product::find($productId);
-        session()->flash('success','Добавлен товар'. $product->name);
+        session()->flash('success','Добавлен товар: ' . $product->name);
 
 
         return redirect()->route('basket');
@@ -94,7 +94,7 @@ return redirect()->route('index');
                 $pivotRow->update();
             }
             $product = Product::find($productId);
-            session()->flash('warning','Удален товар'. $product->name);
+            session()->flash('warning', 'Удален товар' . $product->name);
 
         }
         return redirect()->route('basket');
