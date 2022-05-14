@@ -26,29 +26,32 @@
                 </li>
                 <li ><a href="{{route('basket')}}">В корзину</a></li>
                 <li><a href="{{route('index')}}">Сбросить проект в начальное состояние</a></li>
-                {{--<li><a href="http://internet-shop.tmweb.ru/locale/en">en</a></li>
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">₽<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="http://internet-shop.tmweb.ru/currency/RUB">₽</a></li>
-                        <li><a href="http://internet-shop.tmweb.ru/currency/USD">$</a></li>
-                        <li><a href="http://internet-shop.tmweb.ru/currency/EUR">€</a></li>
-                    </ul>
-                </li>
             </ul>
+            <ul
+                class="nav navbar-nav navbar-right">
+                @guest
+                    <li><a href="{{route ('login' )}}">Панель администратора </a></li>
+                @endguest
 
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://internet-shop.tmweb.ru/login">Войти</a></li>
-
-            </ul>--}}
+                @auth()
+                    <li><a href="{{route('home')}}">Панель администратора </a></li>
+                    <li><a href="{{route ('get-logout' )}}">Выйти</a></li>
+                @endauth
+            </ul>
         </div>
     </div>
 </nav>
 
 <div class="container">
+    <div class="starter-template">
+        @if(session()->has('success'))
+            <p class="alert alert-success">{{session()->get('success')}}</p>
+        @endif
+            @if(session()->has('warning'))
+                <p class="alert alert-warning">{{session()->get('warning')}}</p>
+            @endif
     @yield('content')
-
+    </div>
 </div>
 </body>
 </html>
