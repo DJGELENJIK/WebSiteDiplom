@@ -23,18 +23,23 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules=[
             'code' => 'required|min:3|max:255|unique:categories,code',
             'name' => 'required|min:3|max:255',
             'description' => 'required|min:5',
-        ];
+    ];
+        if ($this->route()->named('categories.update')) {
+            $rules['code'] .= ',' . $this->route()->parameter('category')->id;
+        }
+
+        return   $rules;
     }
     public function messages()
     {
         return [
-            'required' => 'Поле :attribute обязательно для ввода',
-            'min' => 'Поле :attribute должно иметь минимум :min символов',
-            'code.min' => 'Поле код должно содержать не менее :min символов',
+            'required' => 'Поле : обязательно для ввода',
+            'min' => 'Поле :attribute должно иметь минимум : 3 символов',
+            'code.min' => 'Поле код должно содержать не менее : 5 символов',
         ];
     }
 }
