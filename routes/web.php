@@ -8,6 +8,8 @@ Auth::routes([
     'verify' => false,
 ]);
 
+Route::get('reset','App\Http\Controllers\ResetController@reset')->name('reset_db');
+
 Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('get-logout');
 
 Route::middleware(['auth'])->group(function () {
