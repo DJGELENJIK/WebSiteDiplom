@@ -59,4 +59,19 @@
     </div>
 </div>
 </body>
+
+<script>
+    var botmanWidget = {
+        introMessage: "Добрый день! Чем я могу вам помочь?",
+        title: "Чат-бот",
+        placeholderText: "Написать...",
+        aboutText: '',
+        bubbleBackground: "#febd24",
+        mainColor: "#febd24",
+        frameEndpoint: '/chatbot/chatbot',
+        mobileWidth: '100%',
+        bubbleAvatarUrl: "https://avatars.mds.yandex.net/get-zen_doc/3582174/pub_60c062ac364f3c4e9fcfa886_60c06307df00c7571d414d53/scale_1200"
+    };
+</script>
+<script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
 </html>

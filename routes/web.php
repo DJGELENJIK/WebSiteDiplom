@@ -1,12 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BotManController;
 Auth::routes([
     'reset' => false,
     'confirm' => false,
     'verify' => false,
 ]);
+
+Route::get('/chatbot/chatbot', function () {
+    return view('bot');
+});
+
+
+Route::match(['get', 'post'], 'botman', [BotManController::class, 'handle']);
 
 Route::get('reset','App\Http\Controllers\ResetController@reset')->name('reset_db');
 
