@@ -39,8 +39,6 @@
                             <form action="{{ route('products.destroy', $product) }}" method="POST">
                                 <a class="btn btn-success" type="button"
                                    href="{{ route('products.show', $product) }}">Открыть</a>
-              F                  <a class="btn btn-success" type="button"
-                                   href="">Skus</a>
                                 <a class="btn btn-warning" type="button"
                                    href="{{ route('products.edit', $product) }}">Редактировать</a>
                                 @csrf

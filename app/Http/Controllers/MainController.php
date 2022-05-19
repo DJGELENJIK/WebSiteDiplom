@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductFilterRequest;
 use App\Models\Category;
 use App\Models\Product;
+use Barryvdh\Debugbar\Facade as DebugBar;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
     public function index(ProductFilterRequest $request)
     {
-        $productsQuery = Product::query();
+        $productsQuery = Product::with('category');
+        DebugBar::info($request->has('price_from'));
         if ($request->filled('price_from')) {
+            DebugBar::info('price_from');
             $productsQuery->where('price', '>=', $request->price_from);
         }
 
@@ -21,7 +24,7 @@ class MainController extends Controller
         }
         foreach (['hit', 'new', 'recommend'] as $field) {
             if ($request->has($field)) {
-                $productsQuery->where($field, 1);
+                $productsQuery->$field();
             }
         }
 

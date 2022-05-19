@@ -32,7 +32,7 @@ class BasketController extends Controller
             session()->flash('warning','Произошла ошибка');
 
         }
-
+Order::eraseOrderSum();
 
 return redirect()->route('index');
     }
@@ -69,8 +69,9 @@ return redirect()->route('index');
         $order->user_id=Auth::id();
         $order->save();
     }
-
         $product = Product::find($productId);
+        Order::changeFullSum($product->price);
+
         session()->flash('success','Добавлен товар: ' . $product->name);
 
 
@@ -94,6 +95,8 @@ return redirect()->route('index');
                 $pivotRow->update();
             }
             $product = Product::find($productId);
+            Order::changeFullSum(-$product->price);
+
             session()->flash('warning', 'Удален товар' . $product->name);
 
         }
