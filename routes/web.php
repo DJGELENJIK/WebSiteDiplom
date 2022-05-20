@@ -40,12 +40,12 @@ Route::get('/','App\Http\Controllers\MainController@index' )->name('index');
 Route::get('/categories','App\Http\Controllers\MainController@categories')->name('categories');
 
 Route::group(['prefix'=>'basket'], function () {
-    Route::post('/add/{id}', 'App\Http\Controllers\BasketController@basketAdd')->name('basket-add');
+    Route::post('/add/{product}', 'App\Http\Controllers\BasketController@basketAdd')->name('basket-add');
 
     Route::group(['middleware' => 'basket_not_empty'], function () {
         Route::get('/basket', 'App\Http\Controllers\BasketController@basket')->name('basket');
         Route::get('/place', 'App\Http\Controllers\BasketController@basketPlace')->name('basket-place');
-        Route::post('/remove/{id}', 'App\Http\Controllers\BasketController@basketRemove')->name('basket-remove');
+        Route::post('/remove/{product}', 'App\Http\Controllers\BasketController@basketRemove')->name('basket-remove');
         Route::post('/place', 'App\Http\Controllers\BasketController@basketConfirm')->name('basket-confirm');
     });
 });

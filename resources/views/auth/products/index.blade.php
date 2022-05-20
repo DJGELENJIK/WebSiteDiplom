@@ -33,6 +33,8 @@
                     <td>{{ $product->code }}</td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->category->name }}</td>
+                    <td>{{ $product->count }}</td>
+
                     <td></td>
                     <td>
                         <div class="btn-group" role="group">
