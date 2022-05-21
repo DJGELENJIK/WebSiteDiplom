@@ -13,6 +13,9 @@ Route::get('/chatbot/chatbot', function () {
 });
 
 
+Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle']);
+
+
 Route::match(['get', 'post'], 'botman', [BotManController::class, 'handle']);
 
 Route::get('reset','App\Http\Controllers\ResetController@reset')->name('reset_db');

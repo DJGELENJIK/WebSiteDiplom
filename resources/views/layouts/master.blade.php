@@ -62,7 +62,7 @@
 
 <script>
     var botmanWidget = {
-        introMessage: "Добрый день! Чем я могу вам помочь?",
+        introMessage: "Добрый день!",
         title: "Чат-бот",
         placeholderText: "Написать...",
         aboutText: '',

@@ -1,12 +1,18 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use BotMan\BotMan\BotMan;
-use Illuminate\Http\Request;
-use App\Conversations\ExampleConversation;
-use BotMan\BotMan\Messages\Attachments\Image;
-use BotMan\BotMan\Messages\Outgoing\OutgoingMessage;
+use App\Conversation\placeAnOrder;
+use App\Conversation\callTime;
+use App\Conversation\communicationСhannels;
+use App\Conversation\whatKindOfProduct;
+use App\Conversation\paymentMethods;
+use App\Conversation\deliveryTime;
+use App\Conversation\whatGuarantees;
+use App\Conversation\serviceBetter;
+use App\Conversation\whereCart;
+use App\Conversation\whatMail;
+use App\Conversation\whereOffice;
+use BotMan\BotMan\Messages\Incoming\Answer;
 
 class BotManController extends Controller
 {
@@ -17,24 +23,68 @@ class BotManController extends Controller
     {
         $botman = app('botman');
 
+        $botman->hears('{message}', function($bot, $message) {
+
+
+            if ($message == 'как оформить заказ?') {
+                $bot->startConversation(new placeAnOrder);
+            }
+
+            if ($message == 'когда мне позвонят?') {
+                $bot->startConversation(new callTime);
+            }
+
+            if ($message == 'как с вами связаться?') {
+                $bot->startConversation(new communicationСhannels);
+            }
+
+            if ($message == 'какой товар взять?') {
+                $bot->startConversation(new whatKindOfProduct);
+            }
+
+            if ($message == 'как оплатить?') {
+                $bot->startConversation(new paymentMethods);
+            }
+
+            if ($message == 'сколько времени занимает доставка?') {
+                $bot->startConversation(new deliveryTime);
+            }
+
+            if ($message == 'какие гарантии?') {
+                $bot->startConversation(new whatGuarantees);
+            }
+
+            if ($message == 'чем ваш сервис лучше других?') {
+                $bot->startConversation(new serviceBetter);
+            }
+
+            if ($message == 'где увидеть свою корзину?') {
+                $bot->startConversation(new whereCart);
+            }
+
+            if ($message == 'как написать на почту?') {
+                $bot->startConversation(new whatMail);
+            }
+
+            if ($message == 'у вас есть офис?') {
+                $bot->startConversation(new whereOffice);
+            }
+
+        });
+
         $botman->listen();
-
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Place your BotMan logic here.
      */
-    public function tinker()
+    public function askName($botman)
     {
-        return view('bot');
-    }
+        $botman->ask('Hello! What is your Name?', function(Answer $answer) {
 
-    /**
-     * Loaded through routes/botman.php
-     * @param  BotMan $bot
-     */
-    public function startConversation(BotMan $bot)
-    {
-        $bot->startConversation(new ExampleConversation());
+            $name = $answer->getText();
+
+            $this->say('Nice to meet you '.$name);
+        });
     }
 }
