@@ -10,8 +10,23 @@
     <img src="{{ Storage::url($product->image) }}">
     <p>{{ $product->description }}</p>
     @if($product->isAvailable())
-        <a class="btn btn-success" href="{{ route('basket-add', $product) }}">Добавить в корзину</a>
+        <form action="{{ route('basket-add', $product) }}" method="POST">
+            <button type="submit" class="btn btn-success" role="button">Добавить в корзину</button>
+@csrf
+    </form>
     @else
-        Не доступен
+        <span>Не доступен</span>
+        <br>
+        <span>Сообщить мне, когда товар появится в наличии:</span>
+        <div class="warning">
+            @if($errors->get('email'))
+                {!! $errors->get('email')[0] !!}
+            @endif
+        </div>
+        <form method="POST" action="{{ route('subscription', $product) }}">
+            @csrf
+            <input type="text" name="email">
+            <button type="submit">Отправить</button>
+        </form>
     @endif
 @endsection
