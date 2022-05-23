@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('BotMan', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('guarantees');
             $table->string('hello');
             $table->string('bye');
