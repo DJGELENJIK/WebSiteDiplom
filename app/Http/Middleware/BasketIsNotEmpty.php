@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Order;
+use  App\Models\Order;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -19,14 +19,12 @@ class BasketIsNotEmpty
     {
 
         $orderId = session('orderId');
-        if (!is_null($orderId)) {
-            $order = Order::findOrFail($orderId);
-            if ($order->products->count() > 0) {
-                return $next($request);
+
+        if (!is_null($orderId) && Order::getFullSum() > 0) {
+            return $next($request);
             }
 
-        }
-        session()->flash('warning', 'Ваша корзина пуста');
+        session()->flash('warning', __('basket.cart_is_empty'));
         return redirect()->route('index');
 
     }

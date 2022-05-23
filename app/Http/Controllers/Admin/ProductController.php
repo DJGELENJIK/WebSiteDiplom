@@ -86,7 +86,7 @@ class ProductController extends Controller
         $params = $request->all();
         unset($params['image']);
         if ($request->has('image')) {
- Storage::delete($product->image);
+// Storage::delete($product->image);
             $params['image'] = $request->file('image')->store('products');
         }
 
