@@ -84,7 +84,7 @@
                     @endforeach
                 </ul>
             </div>
-
+            <div class="blob orange"></div>
         </div>
     </div>
 </footer>
@@ -98,11 +98,40 @@
         placeholderText: "Написать...",
         aboutText: '',
         bubbleBackground: "#febd24",
-        mainColor: "#febd24",
+        mainColor: "#161717",
         frameEndpoint: '/chatbot/chatbot',
-        mobileWidth: '100%',
-        bubbleAvatarUrl: "https://avatars.mds.yandex.net/get-zen_doc/3582174/pub_60c062ac364f3c4e9fcfa886_60c06307df00c7571d414d53/scale_1200"
+        bubbleAvatarUrl: "https://www.pinclipart.com/picdir/big/521-5218494_mobile-icon-clip-art-mobile-icon-png-download.png"
     };
 </script>
 <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
+
+<style>
+    .desktop-closed-message-avatar {
+        border-radius: 50%;
+        margin: 10px;
+        transform: scale(1);
+        background: rgba(255, 121, 63, 1);
+        box-shadow: 0 0 0 0 rgba(255, 121, 63, 1);
+        animation: pulse-orange 4s infinite;
+    }
+    @keyframes pulse-orange {
+        0% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(255, 121, 63, 0.7);
+        }
+
+        70% {
+            transform: scale(1);
+            box-shadow: 0 0 0 10px rgba(255, 121, 63, 0);
+        }
+
+        100% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(255, 121, 63, 0);
+        }
+    }
+    #botmanWidgetRoot>div>div>div {
+        color: #fff !important;
+    }
+</style>
 </html>

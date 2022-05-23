@@ -211,6 +211,7 @@
         color: white;
         text-align: center;
     }
+
 </style>
 <body>
 <script id="botmanWidget" src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/chat.js'></script>
