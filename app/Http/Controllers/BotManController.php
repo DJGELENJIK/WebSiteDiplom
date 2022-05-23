@@ -25,50 +25,56 @@ class BotManController extends Controller
 
         $botman->hears('{message}', function($bot, $message) {
 
+            $message = preg_replace('/\s/', '', $message);
+            $message = mb_strtolower($message, "UTF-8");
 
-            if ($message == 'как оформить заказ?') {
+
+
+            $bot->reply($message);
+            if ($message == 'какоформитьзаказ?') {
                 $bot->startConversation(new placeAnOrder);
             }
 
-            if ($message == 'когда мне позвонят?') {
+            if ($message == 'когдамнепозвонят?') {
                 $bot->startConversation(new callTime);
             }
 
-            if ($message == 'как с вами связаться?') {
+            if ($message == 'каксвамисвязаться?') {
                 $bot->startConversation(new communicationСhannels);
             }
 
-            if ($message == 'какой товар взять?') {
+            if ($message == 'какойтоварвзять?') {
                 $bot->startConversation(new whatKindOfProduct);
             }
 
-            if ($message == 'как оплатить?') {
+            if ($message == 'какоплатить?') {
                 $bot->startConversation(new paymentMethods);
             }
 
-            if ($message == 'сколько времени занимает доставка?') {
+            if ($message == 'скольковременизанимаетдоставка?') {
                 $bot->startConversation(new deliveryTime);
             }
 
-            if ($message == 'какие гарантии?') {
+            if ($message == 'какиегарантии?') {
                 $bot->startConversation(new whatGuarantees);
             }
 
-            if ($message == 'чем ваш сервис лучше других?') {
+            if ($message == 'чемвашсервислучшедругих?') {
                 $bot->startConversation(new serviceBetter);
             }
 
-            if ($message == 'где увидеть свою корзину?') {
+            if ($message == 'гдеувидетьсвоюкорзину?') {
                 $bot->startConversation(new whereCart);
             }
 
-            if ($message == 'как написать на почту?') {
+            if ($message == 'какнаписатьнапочту?') {
                 $bot->startConversation(new whatMail);
             }
 
-            if ($message == 'у вас есть офис?') {
+            if ($message == 'увасестьофис?') {
                 $bot->startConversation(new whereOffice);
             }
+
 
         });
 
