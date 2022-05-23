@@ -85,6 +85,7 @@
                     @endforeach
                 </ul>
             </div>
+
         </div>
     </div>
 </footer>
