@@ -64,30 +64,30 @@
     @yield('content')
     </div>
 
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6"><p>Категории товаров</p>
+                    <ul>
 
-</div>
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6"><p>Категории товаров</p>
-                <ul>
+                        @foreach($categories as $category)
+                            <li><a href="{{ route('category', $category->code) }}">{{ $category->__('name') }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="col-lg-6"><p>Самые популярные товары</p>
+                    <ul>
 
-                    @foreach($categories as $category)
-                        <li><a href="{{ route('category', $category->code) }}">{{ $category->__('name') }}</a></li>
-                    @endforeach
-                </ul>
+                        @foreach ($bestProducts as $bestProduct)
+                            <li><a href="{{ route('product', [$bestProduct->category->code, $bestProduct->code]) }}">{{ $bestProduct->name }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+
             </div>
-            <div class="col-lg-6"><p>Самые популярные товары</p>
-                <ul>
-
-                    @foreach ($bestProducts as $bestProduct)
-                        <li><a href="{{ route('product', [$bestProduct->category->code, $bestProduct->code]) }}">{{ $bestProduct->name }}</a></li>
-                    @endforeach
-                </ul>
-            </div>
-
         </div>
-    </div>
-</footer>
+    </footer>
+</div>
+
 </body>
 </html>
