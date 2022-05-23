@@ -18,7 +18,7 @@
                 </div>
             </td>
             <td>{{ $product->price }} @lang('main.rub').</td>
-            <td>{{ $product->getPriceForCount() }} @lang('main.rub').</td>
+            <td>{{ $product->getPriceCount() }} @lang('main.rub').</td>
         </tr>
     @endforeach
     </tbody>
