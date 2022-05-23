@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'online_shop' => 'Интернет Магазин',
-    'all_products' => 'Все товары',
+    'online_shop' => 'ИНТЕРНЕТ МАГАЗИН',
+    'all_products' => 'ВСЕ ТОВАРЫ',
     'product' => 'Товар',
-    'categories' => 'Категории',
+    'categories' => 'КАТЕГОРИИ',
     'all_categories' => 'Все Категории',
     'category' => 'Категория ',
-    'cart' => 'В корзину',
+    'cart' => 'В КОРЗИНУ',
     'reset_project' => 'Сбросить проект в начальное состояние',
     'current_lang' => 'ru',
     'set_lang' => 'en',

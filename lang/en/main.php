@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'online_shop' => 'Online Shop',
-    'all_products' => 'All products',
+    'online_shop' => 'ONLINE SHOP',
+    'all_products' => 'ALL PRODUCTS',
     'product' => 'Product',
-    'categories' => 'Categories',
+    'categories' => 'CATEGORIES',
     'all_categories' => 'All categories',
     'category' => 'Category ',
-    'cart' => 'Your cart',
+    'cart' => 'YOUR CART',
     'reset_project' => 'Reset project to default state',
     'current_lang' => 'en',
     'set_lang' => 'ru',
