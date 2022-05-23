@@ -16,6 +16,7 @@ class MainController extends Controller
     public function index(ProductFilterRequest $request)
     {
         $productsQuery = Product::with('category');
+
         DebugBar::info($request->has('price_from'));
         if ($request->filled('price_from')) {
             DebugBar::info('price_from');
@@ -37,8 +38,7 @@ class MainController extends Controller
 
     public function categories()
     {
-        $categories = Category::get();
-        return view('categories ', compact('categories'));
+        return view('categories ');
     }
 
     public function category($code)
