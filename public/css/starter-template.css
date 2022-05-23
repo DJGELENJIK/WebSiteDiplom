@@ -5,6 +5,8 @@ body {
     min-height: 100vh;
     flex-direction: column;
     margin-top: 40px;
+    background-color: #f1dfd1;
+    background-image: linear-gradient(315deg, #f1dfd1 0%, #f6f0ea 74%);
 }
 .container {
     margin-top: 25px;
@@ -136,6 +138,16 @@ footer {
     padding-left: 15px;
     margin-right: 25px;
     margin-left: 25px;
+}
+
+@media (max-width: 900px) {
+    .navbar.navbar-default .container-fluid {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .navbar-default .navbar-brand {
+        margin-right: 5vw !important;
+    }
 }
 
 .nav-auth {

@@ -1,4 +1,4 @@
-<div class="col-sm-6 col-md-4">
+<div class="col-sm-6 col-md-6 col-lg-4">
     <div class="thumbnail">
         <div class="labels">
             <div class="labels">
@@ -35,3 +35,24 @@
         </div>
     </div>
 </div>
+<style>
+    .labels {
+        display: flex;
+        margin-top: 2px;
+        margin-left: 2px;
+    }
+    .thumbnail>img {
+        margin-top: 35px;
+    }
+    .labels .labels>span {
+        padding: 5px;
+        margin-left: 5px;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        text-transform: uppercase;
+        color: #fff;
+        letter-spacing: 2px;
+    }
+
+</style>
