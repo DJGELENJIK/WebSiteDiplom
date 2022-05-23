@@ -38,7 +38,8 @@ class MainController extends Controller
 
     public function categories()
     {
-        return view('categories ');
+//        $categories = Category::get();
+        return view('categories',);
     }
 
     public function category($code)

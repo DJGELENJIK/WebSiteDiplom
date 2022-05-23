@@ -5,7 +5,7 @@
 
 
         <h1>
-            {{$category->__('name')}} {{$category->products->count()}}
+            {{$category->__('name')}}
         </h1>
         <p>
             {{  $category->__('description')}}
