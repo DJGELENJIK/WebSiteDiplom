@@ -36,6 +36,28 @@ class MainController extends Controller
         return view('index', compact('products'));
     }
 
+    public function main(ProductFilterRequest $request) {
+        $productsQuery = Product::with('category');
+
+        DebugBar::info($request->has('price_from'));
+        if ($request->filled('price_from')) {
+            DebugBar::info('price_from');
+            $productsQuery->where('price', '>=', $request->price_from);
+        }
+
+        if ($request->filled('price_to')) {
+            $productsQuery->where('price', '<=', $request->price_to);
+        }
+        foreach (['hit', 'new', 'recommend'] as $field) {
+            if ($request->has($field)) {
+                $productsQuery->$field();
+            }
+        }
+
+        $products = $productsQuery->paginate(6)->withPath("?" . $request->getQueryString());
+        return view('main', compact('products'));
+    }
+
     public function categories()
     {
 //        $categories = Category::get();

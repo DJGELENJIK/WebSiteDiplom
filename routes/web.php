@@ -48,8 +48,8 @@ Route::middleware(['set_locale'])->group(function () {
         Route::resource('products', 'App\Http\Controllers\Admin\ProductController');
     });
 
-
-    Route::get('/','App\Http\Controllers\MainController@index' )->name('index');
+    Route::get('/','App\Http\Controllers\MainController@main' )->name('main');
+    Route::get('/products','App\Http\Controllers\MainController@index' )->name('index');
     Route::get('/categories','App\Http\Controllers\MainController@categories')->name('categories');
 
     Route::post('subscription/{product}', 'App\Http\Controllers\MainController@subscribe')->name('subscription');

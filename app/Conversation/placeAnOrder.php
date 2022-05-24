@@ -29,7 +29,7 @@ class placeAnOrder extends Conversation
                     $attachment = new Video('/public/videos/videoplayback.mp4', [
                         'custom_payload' => true,
                     ]);
-                    $message = OutgoingMessage::create('This is my text')
+                    $message = OutgoingMessage::create('Вы можете посмотреть как оформить заказ')
                         ->withAttachment($attachment);
                     $this->say($message);
 

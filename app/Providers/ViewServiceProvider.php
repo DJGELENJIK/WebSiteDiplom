@@ -26,5 +26,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         View::composer(['layouts.master', 'categories'], 'App\ViewComposers\CategoriesComposer');
         View::composer(['layouts.master'], 'App\ViewComposers\BestProductsComposer');
+        View::composer(['main', 'categories'], 'App\ViewComposers\CategoriesComposer');
+        View::composer(['main'], 'App\ViewComposers\BestProductsComposer');
     }
 }
