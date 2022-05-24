@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BotManController;
+use Illuminate\Support\Facades\Request as Input;
+use App\Models\Product;
+use App\Models\Category;
+
 Auth::routes([
     'reset' => false,
     'confirm' => false,
@@ -69,5 +73,14 @@ Route::middleware(['set_locale'])->group(function () {
     Route::get('/{category}','App\Http\Controllers\MainController@category' )->name('category');
     Route::get('/{category}/{product?}','App\Http\Controllers\MainController@product')->name('product');
 
+    Route::get('/search', function (){
+        $q =Input::get('q');
+        if($q !=""){
+            $products = Product::where('name','LIKE', '%' .$q. '%')->get();
+            if(count($products)>0)
+                return view('ConfirmSearch')->withDetails($products)->withQuery($q);
+        }
+        return view('ConfirmSearch')->withMessage("Ничего не найдено");
+    });
 
 });
