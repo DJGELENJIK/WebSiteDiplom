@@ -35,7 +35,7 @@
         </div>
         <div class="collapse navbar-collapse" id="responsive-menu">
             <ul class="nav navbar-nav">
-                <li><a href="{{route('main')}}">ГЛАВНАЯ</a></li>
+                <li @routeactive('main')><a href="{{route('main')}}">ГЛАВНАЯ</a></li>
                 <li @routeactive('index')><a href="{{route('index')}}">@lang('main.all_products')</a></li>
                 <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -73,7 +73,7 @@
                             <path d="M12 14V16C10.4087 16 8.88258 16.6321 7.75736 17.7574C6.63214 18.8826 6 20.4087 6 22H4C4 19.8783 4.84285 17.8434 6.34315 16.3431C7.84344 14.8429 9.87827 14 12 14V14ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.21 11 16 9.21 16 7C16 4.79 14.21 3 12 3C9.79 3 8 4.79 8 7C8 9.21 9.79 11 12 11ZM21 17H22V22H14V17H15V16C15 15.2044 15.3161 14.4413 15.8787 13.8787C16.4413 13.3161 17.2044 13 18 13C18.7956 13 19.5587 13.3161 20.1213 13.8787C20.6839 14.4413 21 15.2044 21 16V17ZM19 17V16C19 15.7348 18.8946 15.4804 18.7071 15.2929C18.5196 15.1054 18.2652 15 18 15C17.7348 15 17.4804 15.1054 17.2929 15.2929C17.1054 15.4804 17 15.7348 17 16V17H19Z" fill="white"/>
                         </svg></a></div>
             @else
-                <div class="nav-auth"><a href="{{route('person.orders.index')}}">@lang('main.my_orders') </a></div>
+                <div class="nav-auth"><a style="position: relative;top: 13px;" href="{{route('person.orders.index')}}">@lang('main.my_orders') </a></div>
                 @endadmin
                 <div class="nav-auth"><a href="{{route ('get-logout' )}}"><svg width="50" height="50" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M110.56 182.18C112.449 180.014 113.446 177.212 113.348 174.34C113.25 171.467 112.065 168.739 110.033 166.707C108.001 164.675 105.273 163.49 102.4 163.392C99.5281 163.294 96.7258 164.291 94.56 166.18L13.7 246.98C11.5871 249.106 10.4012 251.982 10.4012 254.98C10.4012 257.978 11.5871 260.854 13.7 262.98L94.51 343.8C96.6758 345.689 99.4781 346.686 102.35 346.588C105.223 346.49 107.951 345.305 109.983 343.273C112.015 341.241 113.2 338.513 113.298 335.64C113.396 332.768 112.399 329.966 110.51 327.8L49.04 266.34H268.66C271.668 266.34 274.552 265.145 276.679 263.019C278.805 260.892 280 258.008 280 255C280 251.992 278.805 249.108 276.679 246.981C274.552 244.855 271.668 243.66 268.66 243.66H49.09L110.56 182.18Z" fill="white"/>
@@ -104,13 +104,6 @@
 
                     @foreach($categories as $category)
                         <li><a href="{{ route('category', $category->code) }}">{{ $category->__('name') }}</a></li>
-                    @endforeach
-                </ul>
-            </div>
-            <div class="col-lg-6"><p>Самые популярные товары</p>
-                <ul>
-                    @foreach ($bestProducts as $bestProduct)
-                        <li><a href="{{ route('product', [$bestProduct->category->code, $bestProduct->code]) }}">{{ $bestProduct->name }}</a></li>
                     @endforeach
                 </ul>
             </div>

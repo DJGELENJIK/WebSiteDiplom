@@ -160,7 +160,7 @@ footer {
     flex-direction: row;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .nav.navbar-nav {
         flex-direction: column;
     }
@@ -260,6 +260,10 @@ footer {
 .nav-auth>a:hover {
     color: #161717;
     text-decoration: none;
+}
+
+.navbar-header {
+    margin-right: 25px !important;
 }
 
 .navbar-header>a {

@@ -2,15 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BotManController;
-use Illuminate\Support\Facades\Request as Input;
-use App\Models\Product;
-use App\Models\Category;
-
-
-
-
-
-
 Auth::routes([
     'reset' => false,
     'confirm' => false,
@@ -22,7 +13,7 @@ Route::get('/chatbot/chatbot', function () {
     return view('bot');
 });
 
-
+Route::get('/search','App\Http\Controllers\MainController@search')->name('search');
 
 Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle']);
 
@@ -37,11 +28,11 @@ Route::middleware(['set_locale'])->group(function () {
 
     Route::middleware(['auth'])->group(function () {
         Route::group([
-            'prefix' => 'person',
-            'namespace' => 'App\Http\Controllers\Person',
-            'as' => 'person.'
+            'prefix'=>'person',
+            'namespace'=>'App\Http\Controllers\Person',
+            'as'=>'person.'
 
-        ], function () {
+        ],function (){
             Route::get('/orders', 'OrderController@index')->name('orders.index');
             Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
         });
@@ -58,14 +49,13 @@ Route::middleware(['set_locale'])->group(function () {
         Route::resource('products', 'App\Http\Controllers\Admin\ProductController');
     });
 
-    Route::get('/', 'App\Http\Controllers\MainController@main')->name('main');
-    Route::get('/products', 'App\Http\Controllers\MainController@index')->name('index');
-
-    Route::get('/categories', 'App\Http\Controllers\MainController@categories')->name('categories');
+    Route::get('/','App\Http\Controllers\MainController@main' )->name('main');
+    Route::get('/product','App\Http\Controllers\MainController@index' )->name('index');
+    Route::get('/categories','App\Http\Controllers\MainController@categories')->name('categories');
 
     Route::post('subscription/{product}', 'App\Http\Controllers\MainController@subscribe')->name('subscription');
 
-    Route::group(['prefix' => 'basket'], function () {
+    Route::group(['prefix'=>'basket'], function () {
         Route::post('/add/{product}', 'App\Http\Controllers\BasketController@basketAdd')->name('basket-add');
 
         Route::group(['middleware' => 'basket_not_empty'], function () {
@@ -75,19 +65,9 @@ Route::middleware(['set_locale'])->group(function () {
             Route::post('/place', 'App\Http\Controllers\BasketController@basketConfirm')->name('basket-confirm');
         });
     });
-    Route::get('/search', function (){
-        $q =Input::get('q');
-        if($q !=""){
-            $products = Product::where('name','LIKE', '%' .$q. '%')->get();
-            if(count($products)>0)
-                return view('ConfirmSearch')->withDetails($products)->withQuery($q);
-        }
-        return view('ConfirmSearch')->withMessage("Ничего не найдено");
-    });
 
+    Route::get('/{category}','App\Http\Controllers\MainController@category' )->name('category');
+    Route::get('/{category}/{product?}','App\Http\Controllers\MainController@product')->name('product');
 
-
-    Route::get('/{category}', 'App\Http\Controllers\MainController@category')->name('category');
-    Route::get('/{category}/{product?}', 'App\Http\Controllers\MainController@product')->name('product');
 
 });

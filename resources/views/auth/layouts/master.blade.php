@@ -23,7 +23,7 @@
 <div id="app">
     <nav class="navbar navbar-default navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{{route('index')}}">
+            <a class="navbar-brand" href="{{route('main')}}">
                 Вернуться на сайт
             </a>
 
