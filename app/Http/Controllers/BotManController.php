@@ -23,12 +23,11 @@ class BotManController extends Controller
     {
         $botman = app('botman');
 
+
         $botman->hears('{message}', function($bot, $message) {
 
             $message = preg_replace('/\s/', '', $message);
             $message = mb_strtolower($message, "UTF-8");
-
-
 
             $bot->reply($message);
             if ($message == 'какоформитьзаказ?') {
