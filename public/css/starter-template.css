@@ -153,6 +153,8 @@ footer {
     color: #FFF;
     width: 100%;
     text-align: left;
+    position: relative;
+    top: -2px;
 }
 
 .nav.navbar-nav {
