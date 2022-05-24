@@ -28,7 +28,7 @@
         <div class="swiper-wrapper">
             @foreach ($bestProducts as $bestProduct)
                 <div class="swiper-slide">
-                    <img src="{{ $bestProduct->image }}" alt="Картинка не загрузилась :(" />
+                    <img src="{{ Storage::url($bestProduct->image) }}" alt="{{ $bestProduct->price }}" />
                     <a class="popular-link" href="{{ route('product', [$bestProduct->category->code, $bestProduct->code]) }}">{{ $bestProduct->name }}</a>
                 </div>
             @endforeach
