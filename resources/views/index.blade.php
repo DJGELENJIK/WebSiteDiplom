@@ -33,12 +33,27 @@
     </div>
 </form>
 
+<form method="get" action="{{ route('search') }}">
+    <div class="form-row">
+        <div class="form-group col-md-10">
+            <input type="text" class="form-control" id="s" name="s" placeholder="Search...">
+        </div>
+        <div class="form-group col-md-2">
+            <button type="submit" class="btn btn-primary btn-block">Search</button>
+        </div>
+    </div>
+</form>
+
+
+
+
         <div class="row">
             @foreach($products as $product)
                 @include('layouts.card',compact('product'))
             @endforeach
         </div>
-    {{$products->links()}}
+{{$products->links()}}
+
 
 @endsection
 

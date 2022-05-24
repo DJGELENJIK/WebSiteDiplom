@@ -13,6 +13,7 @@ Route::get('/chatbot/chatbot', function () {
     return view('bot');
 });
 
+Route::get('/search','App\Http\Controllers\MainController@search')->name('search');
 
 Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle']);
 
