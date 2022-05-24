@@ -13,13 +13,15 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <link href="/css/starter-template.css" rel="stylesheet">
+    <script src="{{asset('js/swiper.js')}}"></script>
+    <link href="{{asset('css/starter-template.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/swiper.css')}}"/>
+
 </head>
 <body>
 
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
-        <!—Название сайта и кнопка раскрытия меню для мобильных-->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#responsive-menu">
                 <span class="sr-only">Toggle navigation</span>
@@ -29,12 +31,28 @@
                 <span class="icon-bar"></span>
                 </div>
             </button>
-            <a class="navbar-brand" href="{{route('index')}}">@lang('main.online_shop')</a>
+            <a class="nav-icon" href="{{route('main')}}"><img src="{{ asset('img/logo.svg') }}"></a>
         </div>
         <div class="collapse navbar-collapse" id="responsive-menu">
             <ul class="nav navbar-nav">
+                <li><a href="{{route('main')}}">ГЛАВНАЯ</a></li>
                 <li @routeactive('index')><a href="{{route('index')}}">@lang('main.all_products')</a></li>
-                <li @routeactive('categor')><a href="{{route('categories')}}">@lang('main.categories')</a>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Категории
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        @foreach($categories as $category)
+                            <li>
+                                <a class="category-text" href="{{route('category', $category->code)}}">
+                                    <img src="{{ asset('img/dot.svg') }}">
+                                    <h2 class="category-link">{{$category->__('name')}}</h2>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
                 </li>
                 <li @routeactive('basket') ><a href="{{route('basket')}}">@lang('main.cart')</a></li>
 
@@ -91,13 +109,11 @@
             </div>
             <div class="col-lg-6"><p>Самые популярные товары</p>
                 <ul>
-
                     @foreach ($bestProducts as $bestProduct)
                         <li><a href="{{ route('product', [$bestProduct->category->code, $bestProduct->code]) }}">{{ $bestProduct->name }}</a></li>
                     @endforeach
                 </ul>
             </div>
-            <div class="blob orange"></div>
         </div>
     </div>
 </footer>
