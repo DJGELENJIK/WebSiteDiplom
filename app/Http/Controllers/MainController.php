@@ -96,9 +96,4 @@ class MainController extends Controller
         return redirect()->back();
     }
 
-    public function search(Request $request){
-        $s = $request->s;
-        $products = Product::where('name', 'LIKE', "%{$s}%")->orWhere('name');
-        return view('index', compact('products'));
-    }
 }

@@ -33,25 +33,24 @@
     </div>
 </form>
 
-<form method="get" action="{{ route('search') }}">
+
+<form action="/search" method="get" role="search">
+    {{ csrf_field() }}
     <div class="form-row">
         <div class="form-group col-md-10">
-            <input type="text" class="form-control" id="s" name="s" placeholder="Search...">
+            <input type="text" class="form-control" name="q" placeholder="Найти...">
         </div>
         <div class="form-group col-md-2">
-            <button type="submit" class="btn btn-primary btn-block">Search</button>
+            <button type="submit" class="btn btn-primary btn-block">Поиск</button>
         </div>
     </div>
-</form>
 
 
-
-
-        <div class="row">
-            @foreach($products as $product)
-                @include('layouts.card',compact('product'))
-            @endforeach
-        </div>
+<div class="row">
+    @foreach($products as $product)
+        @include('layouts.card',compact('product'))
+    @endforeach
+</div>
 {{$products->links()}}
 
 
