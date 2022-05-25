@@ -13,20 +13,17 @@ class communicationСhannels extends Conversation
 
     public function askReason()
     {
-        $question = Question::create("С нами можно связаться по горячей линии +7(977)-153-63-05. Я ответил на Ваш вопрос?")
+        $question = Question::create("С нами можно связаться по горячей линии +7(977)-153-63-05 или почте mail@mail.ru.")
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
             ->addButtons([
-                Button::create('Да')->value('yes'),
-                Button::create('Нет')->value('no'),
+                Button::create('Хорошо')->value('yes'),
             ]);
 
         return $this->ask($question, function (Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
                 if ($answer->getValue() === 'yes') {
-                    $this->say('Хорошо! Если у вас будут ещё вопросы, обращайтесь!');
-                } else {
-                    $this->say('Если я не смог ответить на ваш вопрос, прошу позвоните на нашу горячую линию! +7(977)153-63-05');
+                    $this->say('Если у вас будут ещё вопросы, обращайтесь!');
                 }
             }
         });
