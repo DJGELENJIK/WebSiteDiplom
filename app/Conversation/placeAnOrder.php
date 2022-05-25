@@ -26,15 +26,15 @@ class placeAnOrder extends Conversation
         return $this->ask($question, function (Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
                 if ($answer->getValue() === 'yes') {
-                    $attachment = new Video('/public/videos/videoplayback.mp4', [
+                    $this->say('Хорошо! Если у вас будут ещё вопросы, обращайтесь!');
+                } else {
+                    $attachment = new Video('/videos/videoplayback.mp4', [
                         'custom_payload' => true,
                     ]);
                     $message = OutgoingMessage::create('Вы можете посмотреть как оформить заказ')
                         ->withAttachment($attachment);
                     $this->say($message);
 
-                } else {
-                    $this->say('Если я не смог ответить на ваш вопрос, прошу позвоните на нашу горячую линию! +7(977)153-63-05');
                 }
             }
         });

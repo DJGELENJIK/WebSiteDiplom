@@ -13,7 +13,7 @@ class paymentMethods extends Conversation
 
     public function askReason()
     {
-        $question = Question::create("Вы можете оплатить заказ онлайн по карте. Я ответил на Ваш вопрос?")
+        $question = Question::create("Оплата происходит при получении заказа курьеру наличными или банковской картой. Я ответил на Ваш вопрос?")
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
             ->addButtons([

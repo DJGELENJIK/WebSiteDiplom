@@ -87,10 +87,10 @@
 <div class="container">
     <div class="starter-template">
         @if(session()->has('success'))
-            <p class="alert alert-success">{{session()->get('success')}}</p>
+            <p style="background-color: #75ed6d" class="alert alert-success">{{session()->get('success')}}</p>
         @endif
             @if(session()->has('warning'))
-                <p class="alert alert-warning">{{session()->get('warning')}}</p>
+                <p style="background-color: #eded6e" class="alert alert-warning">{{session()->get('warning')}}</p>
             @endif
     @yield('content')
     </div>

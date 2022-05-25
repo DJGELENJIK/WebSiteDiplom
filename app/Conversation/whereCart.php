@@ -13,7 +13,7 @@ class whereCart extends Conversation
 
     public function askReason()
     {
-        $question = Question::create("Корзина находится ... . Я ответил на Ваш вопрос?")
+        $question = Question::create("Корзина находится в шапке нашего сайта. Я ответил на Ваш вопрос?")
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
             ->addButtons([

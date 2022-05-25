@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Conversation\placeAnOrder;
 use App\Conversation\callTime;
 use App\Conversation\communicationСhannels;
+use App\Conversation\submitError;
 use App\Conversation\whatKindOfProduct;
 use App\Conversation\paymentMethods;
 use App\Conversation\deliveryTime;
@@ -12,13 +13,17 @@ use App\Conversation\serviceBetter;
 use App\Conversation\whereCart;
 use App\Conversation\whatMail;
 use App\Conversation\whereOffice;
+use BotMan\BotMan\Messages\Attachments\Image;
+use BotMan\BotMan\Messages\Attachments\Video;
 use BotMan\BotMan\Messages\Incoming\Answer;
+use BotMan\BotMan\Messages\Outgoing\OutgoingMessage;
 
 class BotManController extends Controller
 {
 
     public function handle()
     {
+
         $botman = app('botman');
 
         $botman->hears('{message}', function($bot, $message) {
@@ -32,55 +37,80 @@ class BotManController extends Controller
             $service = array('вашсервис', 'нашсерсвис', 'чемлучше', 'сервис', 'сервислучше', 'чемвылучше', 'чемвашсервислучшедругих', 'почемувашсервислучшедругих', 'почемувылучше', 'вылучше',);
             $garanties = array('вашигарантии', 'гарантии', 'гдегарантии', 'какиегарантии', 'хочугарантии', 'мненужныгарантии', 'какузнатьвашигарантии', 'ждугарантии', 'ожидаюгарантии', 'какиеувасгарантии',);
             $delivery = array('доставка', 'моядоставка', 'гдедоставка', 'когдадоставка', 'восколькодоставка', 'ожидаюдоставку', 'скольковременизайметдоставка', 'вашадоставка', 'мненужнадоставка', 'доставочка',);
-            $message = preg_replace('/\s/', '', $message);
-            $message = mb_strtolower($message, "UTF-8");
+            $error = array('ошибка','уменяошибка','ошибки','естьошибка','увасошибка','помогите','помощь','исправьтеошибку','исправитьошибку','какисправитьошибку','чтоделатьсошибкой','чтосделатьсошибкой','возможноувасошибка','вероятноувасошибка','помогитесошибкой','помощьсошибкой');
 
 
 
-//            $bot->reply($message);
-            if (in_array($message, $placeOrder, true)) {
+//           $bot->reply($message);
+            if ($this->trigger($placeOrder, $message)) {
                 $bot->startConversation(new placeAnOrder);
             }
 
-            if (in_array($message, $whenCall, true)) {
+            elseif ($this->trigger($whenCall, $message)) {
                 $bot->startConversation(new callTime);
             }
 
-            if (in_array($message, $howCall, true)) {
+            elseif ($this->trigger($howCall, $message)) {
                 $bot->startConversation(new communicationСhannels);
             }
 
-            if (in_array($message, $howPay, true)) {
+            elseif ($this->trigger($howPay, $message)) {
                 $bot->startConversation(new paymentMethods);
             }
 
-            if (in_array($message, $delivery, true)) {
+            elseif ($this->trigger($delivery, $message)) {
                 $bot->startConversation(new deliveryTime);
             }
 
-            if (in_array($message, $garanties, true)) {
-                $bot->startConversation(new whatGuarantees);
+            elseif ($this->trigger($garanties, $message)) {
+                // Create attachment
+                $attachment = new Video('/videos/videoplayback.mp4', [
+                    'custom_payload' => true,
+                ]);
+
+                $message = OutgoingMessage::create('This is my text')
+                    ->withAttachment($attachment);
+
+                $bot->reply($message);
             }
 
-            if (in_array($message, $service, true)) {
+            elseif ($this->trigger($service, $message)) {
                 $bot->startConversation(new serviceBetter);
             }
 
-            if (in_array($message, $basket, true)) {
+            elseif ($this->trigger($basket, $message)) {
                 $bot->startConversation(new whereCart);
             }
 
-            if (in_array($message, $mail, true)) {
+            elseif ($this->trigger($mail, $message)) {
                 $bot->startConversation(new whatMail);
             }
 
-            if (in_array($message, $HaveOffice, true)) {
+            elseif ($this->trigger($HaveOffice, $message)) {
                 $bot->startConversation(new whereOffice);
             }
 
+            elseif ($this->trigger($error, $message)) {
+                $bot->startConversation(new submitError);
+            }
+
+            else {
+                $bot->reply('Я вас не понимаю');
+            }
 
         });
 
         $botman->listen();
+    }
+
+    public function trigger ($arr, $message) {
+        $flag = false;
+        $message = preg_replace('/\s/', '', $message);
+        $message = mb_strtolower($message, "UTF-8");
+        foreach ($arr as $value) {
+            if(str_contains($message, $value))
+                $flag = true;
+        }
+        return $flag;
     }
 }
