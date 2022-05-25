@@ -82,7 +82,7 @@ class MainController extends Controller
             'product_id' => $product->id,
         ]);
 
-        return redirect()->back()->with('success', __('product.we_will_update'));
+        return redirect()->back()->with('success', __('main.we_will_update'));
     }
 
     public function changeLocale($locale)
