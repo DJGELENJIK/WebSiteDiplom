@@ -13,7 +13,7 @@ class serviceBetter extends Conversation
 
     public function askReason()
     {
-        $question = Question::create("Наш сервис имеет следующие преимущества: . Я ответил на Ваш вопрос?")
+        $question = Question::create("Вы можете посмотреть преймущества нащей компании на главной странице. Я ответил на Ваш вопрос?")
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
             ->addButtons([

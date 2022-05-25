@@ -13,7 +13,7 @@ class whereOffice extends Conversation
 
     public function askReason()
     {
-        $question = Question::create("Наш офис находится по адресу город Москва, улица Пушкина, дом Калатушкина. Я ответил на Ваш вопрос?")
+        $question = Question::create("Наш офис находится по адресу город Москва, Проспект Вернадского 1. Я ответил на Ваш вопрос?")
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
             ->addButtons([

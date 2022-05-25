@@ -2,9 +2,11 @@
 
 namespace App\Conversation;
 
+use BotMan\BotMan\Messages\Attachments\Video;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use BotMan\BotMan\Messages\Incoming\Answer;
 use BotMan\BotMan\Messages\Outgoing\Actions\Button;
+use BotMan\BotMan\Messages\Outgoing\OutgoingMessage;
 use BotMan\BotMan\Messages\Outgoing\Question;
 
 
@@ -26,7 +28,13 @@ class whereCart extends Conversation
                 if ($answer->getValue() === 'yes') {
                     $this->say('Хорошо! Если у вас будут ещё вопросы, обращайтесь!');
                 } else {
-                    $this->say('Если я не смог ответить на ваш вопрос, прошу позвоните на нашу горячую линию! +7(977)153-63-05');
+                    $attachment = new Video('/videos/testvideo.mp4', [
+                        'custom_payload' => true,
+                    ]);
+                    $message = OutgoingMessage::create('Вы можете посмотреть как пользоваться коризной в этом видео')
+                        ->withAttachment($attachment);
+                    $this->say($message);
+
                 }
             }
         });

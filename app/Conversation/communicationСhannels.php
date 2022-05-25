@@ -13,7 +13,7 @@ class communicationСhannels extends Conversation
 
     public function askReason()
     {
-        $question = Question::create("С нами можно связаться по горячей линии +7(977) 153 63 05. Я ответил на Ваш вопрос?")
+        $question = Question::create("С нами можно связаться по горячей линии +7(977)-153-63-05. Я ответил на Ваш вопрос?")
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
             ->addButtons([

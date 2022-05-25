@@ -13,7 +13,7 @@ class deliveryTime extends Conversation
 
     public function askReason()
     {
-        $question = Question::create("Доставка товара занимает от 3 до 5 дней . Я ответил на Ваш вопрос?")
+        $question = Question::create("Доставка товара занимает от 3 до 5 дней. Я ответил на Ваш вопрос?")
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
             ->addButtons([

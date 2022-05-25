@@ -38,9 +38,6 @@ class BotManController extends Controller
             $garanties = array('вашигарантии', 'гарантии', 'гдегарантии', 'какиегарантии', 'хочугарантии', 'мненужныгарантии', 'какузнатьвашигарантии', 'ждугарантии', 'ожидаюгарантии', 'какиеувасгарантии',);
             $delivery = array('доставка', 'моядоставка', 'гдедоставка', 'когдадоставка', 'восколькодоставка', 'ожидаюдоставку', 'скольковременизайметдоставка', 'вашадоставка', 'мненужнадоставка', 'доставочка',);
             $error = array('ошибка','уменяошибка','ошибки','естьошибка','увасошибка','помогите','помощь','исправьтеошибку','исправитьошибку','какисправитьошибку','чтоделатьсошибкой','чтосделатьсошибкой','возможноувасошибка','вероятноувасошибка','помогитесошибкой','помощьсошибкой');
-
-
-
 //           $bot->reply($message);
             if ($this->trigger($placeOrder, $message)) {
                 $bot->startConversation(new placeAnOrder);
@@ -63,15 +60,7 @@ class BotManController extends Controller
             }
 
             elseif ($this->trigger($garanties, $message)) {
-                // Create attachment
-                $attachment = new Video('/videos/videoplayback.mp4', [
-                    'custom_payload' => true,
-                ]);
-
-                $message = OutgoingMessage::create('This is my text')
-                    ->withAttachment($attachment);
-
-                $bot->reply($message);
+                $bot->startConversation(new whatGuarantees);
             }
 
             elseif ($this->trigger($service, $message)) {

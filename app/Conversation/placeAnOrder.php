@@ -28,10 +28,10 @@ class placeAnOrder extends Conversation
                 if ($answer->getValue() === 'yes') {
                     $this->say('Хорошо! Если у вас будут ещё вопросы, обращайтесь!');
                 } else {
-                    $attachment = new Video('/videos/videoplayback.mp4', [
+                    $attachment = new Video('/videos/testvideo.mp4', [
                         'custom_payload' => true,
                     ]);
-                    $message = OutgoingMessage::create('Вы можете посмотреть как оформить заказ')
+                    $message = OutgoingMessage::create('Вы можете посмотреть как оформить заказ в нашем видео')
                         ->withAttachment($attachment);
                     $this->say($message);
 
