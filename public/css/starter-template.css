@@ -141,10 +141,6 @@ footer {
     border-radius: 15px;
 }
 
-.row>:first-child {
-    display: none;
-}
-
 .btn.btn-default.dropdown-toggle {
     background: none;
     padding: 15px;
