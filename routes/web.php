@@ -39,6 +39,7 @@ Route::middleware(['set_locale'])->group(function () {
         ],function (){
             Route::get('/orders', 'OrderController@index')->name('orders.index');
             Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
+
         });
 
         Route::group(['middleware' => 'auth', 'namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'
@@ -46,6 +47,8 @@ Route::middleware(['set_locale'])->group(function () {
             Route::group(['middleware' => 'is_admin'], function () {
                 Route::get('/orders', 'OrderController@index')->name('home');
                 Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
+                Route::get('/subscriptions','SubscriberController@index')->name('back');
+                Route::get('/subscriptions/{subscription}','SubscriberController@show')->name('subscriptions.show');
             });
             Route::resource('categories', 'CategoryController');
         });
@@ -53,11 +56,14 @@ Route::middleware(['set_locale'])->group(function () {
         Route::resource('products', 'App\Http\Controllers\Admin\ProductController');
     });
 
+
     Route::get('/','App\Http\Controllers\MainController@main' )->name('main');
     Route::get('/product','App\Http\Controllers\MainController@index' )->name('index');
     Route::get('/categories','App\Http\Controllers\MainController@categories')->name('categories');
 
+
     Route::post('subscription/{product}', 'App\Http\Controllers\MainController@subscribe')->name('subscription');
+
 
     Route::group(['prefix'=>'basket'], function () {
         Route::post('/add/{product}', 'App\Http\Controllers\BasketController@basketAdd')->name('basket-add');

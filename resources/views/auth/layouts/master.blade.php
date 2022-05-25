@@ -34,6 +34,7 @@
                     <li> <a href="{{route('categories.index')}}">Категории </a> </li>
                     <li> <a href="{{route('products.index')}}">Товары</a>
                     <li><a href="{{ route('home') }}">Заказы</a> </li>
+                    <li><a href="{{ route('back') }}">Подписчики</a> </li>
                         @endadmin
 
                 </ul>
