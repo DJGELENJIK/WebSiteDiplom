@@ -49,6 +49,7 @@ Route::middleware(['set_locale'])->group(function () {
                 Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
                 Route::get('/subscriptions','SubscriberController@index')->name('back');
                 Route::get('/subscriptions/{subscription}','SubscriberController@show')->name('subscriptions.show');
+                Route::get('/bot','BotmanController@index')->name('bot');
             });
             Route::resource('categories', 'CategoryController');
         });
