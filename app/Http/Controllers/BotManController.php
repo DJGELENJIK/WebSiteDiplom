@@ -26,6 +26,7 @@ class BotManController extends Controller
         $botman = app('botman');
 
         $botman->hears('{message}', function($bot, $message) {
+<<<<<<< Updated upstream
             $placeOrder = array('какоформитьзаказ','каксделатьзаказ','хочусделатьзаказ','сделатьзаказ','заказать','оформлениезаказа','заказ','создатьзаказ','купить','каккупить');
             $whenCall = array('когдапозвонят','когдамнепозвонят','ждузвонок','звонок','мнепозвонят','перезвонить','перезвоните','когдаждатьзвонок','когдазвонок','когдаоператормнепозвонит');
             $howCall = array('вашиконтакты','каксвамисвязаться','какдостучаться','какдостучатьсядовас','вашиданные');
@@ -86,6 +87,59 @@ class BotManController extends Controller
             else {
                 $bot->reply('Я вас не понимаю');
             }
+=======
+
+            $message = preg_replace('/\s/', '', $message);
+            $message = mb_strtolower($message, "UTF-8");
+
+
+
+            $bot->reply($message);
+            if ($message == 'какоформитьзаказ?') {
+                $bot->startConversation(new placeAnOrder);
+            }
+
+            if ($message == 'когдамнепозвонят?') {
+                $bot->startConversation(new callTime);
+            }
+
+            if ($message == 'каксвамисвязаться?') {
+                $bot->startConversation(new communicationСhannels);
+            }
+
+            if ($message == 'какойтоварвзять?') {
+                $bot->startConversation(new whatKindOfProduct);
+            }
+
+            if ($message == 'какоплатить?') {
+                $bot->startConversation(new paymentMethods);
+            }
+
+            if ($message == 'скольковременизанимаетдоставка?') {
+                $bot->startConversation(new deliveryTime);
+            }
+
+            if ($message == 'какиегарантии?') {
+                $bot->startConversation(new whatGuarantees);
+            }
+
+            if ($message == 'чемвашсервислучшедругих?') {
+                $bot->startConversation(new serviceBetter);
+            }
+
+            if ($message == 'гдеувидетьсвоюкорзину?') {
+                $bot->startConversation(new whereCart);
+            }
+
+            if ($message == 'какнаписатьнапочту?') {
+                $bot->startConversation(new whatMail);
+            }
+
+            if ($message == 'увасестьофис?') {
+                $bot->startConversation(new whereOffice);
+            }
+
+>>>>>>> Stashed changes
 
         });
 

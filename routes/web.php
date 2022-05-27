@@ -13,6 +13,10 @@ Auth::routes([
 ]);
 Route::get('locale/{locale}', 'App\Http\Controllers\MainController@changeLocale')->name('locale');
 
+Route::get('/telegram/chatbot', function (App\Helpers\Telegram $telegram) {
+    $telegram->sendDocument(794203705,'1.png');
+});
+
 Route::get('/chatbot/chatbot', function () {
     return view('bot');
 });

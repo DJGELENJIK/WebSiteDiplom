@@ -26,7 +26,13 @@ class placeAnOrder extends Conversation
         return $this->ask($question, function (Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
                 if ($answer->getValue() === 'yes') {
-                    $this->say('Хорошо! Если у вас будут ещё вопросы, обращайтесь!');
+                    $attachment = new Video('/public/videos/videoplayback.mp4', [
+                        'custom_payload' => true,
+                    ]);
+                    $message = OutgoingMessage::create('This is my text')
+                        ->withAttachment($attachment);
+                    $this->say($message);
+
                 } else {
                     $attachment = new Video('/videos/testvideo.mp4', [
                         'custom_payload' => true,
