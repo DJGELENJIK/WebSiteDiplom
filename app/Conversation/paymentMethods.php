@@ -13,6 +13,7 @@ class paymentMethods extends Conversation
 
     public function askReason()
     {
+
         $question = Question::create("Оплата происходит при получении заказа курьеру наличными или банковской картой. Я ответил на Ваш вопрос?")
             ->fallback('Unable to ask question')
             ->callbackId('ask_reason')
@@ -32,9 +33,6 @@ class paymentMethods extends Conversation
         });
     }
 
-    /**
-     * Start the conversation
-     */
     public function run()
     {
         $this->askReason();

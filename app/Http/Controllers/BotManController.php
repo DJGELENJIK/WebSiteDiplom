@@ -23,7 +23,6 @@ class BotManController extends Controller
 
     public function handle()
     {
-
         $botman = app('botman');
 
         $botman->hears('{message}', function($bot, $message) {
@@ -39,6 +38,7 @@ class BotManController extends Controller
             $delivery = array('доставка', 'моядоставка', 'гдедоставка', 'когдадоставка', 'восколькодоставка', 'ожидаюдоставку', 'скольковременизайметдоставка', 'вашадоставка', 'мненужнадоставка', 'доставочка',);
             $error = array('ошибка','уменяошибка','ошибки','естьошибка','увасошибка','помогите','помощь','исправьтеошибку','исправитьошибку','какисправитьошибку','чтоделатьсошибкой','чтосделатьсошибкой','возможноувасошибка','вероятноувасошибка','помогитесошибкой','помощьсошибкой');
 //           $bot->reply($message);
+
             if ($this->trigger($placeOrder, $message)) {
                 $bot->startConversation(new placeAnOrder);
             }
