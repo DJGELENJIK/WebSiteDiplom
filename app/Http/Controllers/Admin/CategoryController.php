@@ -85,7 +85,7 @@ if ($request->has('image')){
         $params = $request->all();
         unset($params['image']);
         if ($request->has('image')){
-            Storage::delete($category->image);
+//            Storage::delete($category->image);
             $path = $request->file('image')->store('categories');
             $params['image'] = $path;
         }
