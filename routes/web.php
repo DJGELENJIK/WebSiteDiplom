@@ -5,6 +5,7 @@ use App\Http\Controllers\BotManController;
 use Illuminate\Support\Facades\Request as Input;
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 
 Auth::routes([
     'reset' => false,
@@ -27,6 +28,10 @@ Route::match(['get', 'post'], 'botman', [BotManController::class, 'handle']);
 Route::get('reset','App\Http\Controllers\ResetController@reset')->name('reset_db');
 
 Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('get-logout');
+
+Route::get('/telegram/telegram', function (\App\Helpers\Telegram $telegram) {
+        $telegram->sendDocument(794203705, 'why.png');
+});
 
 Route::middleware(['set_locale'])->group(function () {
 

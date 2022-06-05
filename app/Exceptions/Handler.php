@@ -2,6 +2,8 @@
 
 namespace App\Exceptions;
 
+use App\Helpers\Telegram;
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -35,6 +37,28 @@ class Handler extends ExceptionHandler
         'password',
         'password_confirmation',
     ];
+
+
+    protected $telegram;
+
+    public function __construct(Container $container, Telegram $telegram)
+    {
+        parent::__construct($container);
+        $this->telegram = $telegram;
+    }
+
+    public function report(Throwable $e)
+    {
+        $data = [
+            'message' => $e->getMessage(),
+          'description' => $e->getFile(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+        ];
+
+        $this->telegram->sendMessage(env('REPORT_TELEGRAM_ID'), (string)view('telegramViews.errorReport', $data));
+
+    }
 
     /**
      * Register the exception handling callbacks for the application.

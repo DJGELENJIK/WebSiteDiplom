@@ -7,7 +7,6 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
 //use Nette\Utils\Paginator;
 
 
@@ -20,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind(Telegram::class, function ($app) {
+            return new Telegram(new Http(), config('bots.bot'));
+        });
         Schema::defaultStringLength(191);
     }
 
