@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Providers;
+use App\Helpers\Telegram;
 use App\Models\Product;
 use App\Observers\ProductObserver;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 //use Nette\Utils\Paginator;
 
