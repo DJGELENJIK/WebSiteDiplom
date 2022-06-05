@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Classes\Basket;
+use App\Events\OrderStore;
+use App\Helpers\Telegram;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -10,16 +12,17 @@ use Illuminate\Support\Facades\Auth;
 
 class BasketController extends Controller
 {
+
     public function basket()
     {
         $order = (new Basket())->getOrder();
         return view('basket',compact('order'));
     }
     public function basketConfirm(Request $request){
-
         $email = Auth::check() ? Auth::user()->email : $request->email;
         if ((new Basket())->saveOrder($request->name, $request->phone, $email)) {
             session()->flash('success', __('basket.you_order_confirmed'));
+            event(new OrderStore($request));
         }else {
             session()->flash('warning',__('basket.you_cant_order_more'));
 
