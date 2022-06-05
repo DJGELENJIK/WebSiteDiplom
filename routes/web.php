@@ -30,7 +30,7 @@ Route::get('reset','App\Http\Controllers\ResetController@reset')->name('reset_db
 Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('get-logout');
 
 Route::get('/telegram/telegram', function (\App\Helpers\Telegram $telegram) {
-        $telegram->sendDocument(794203705, 'why.png');
+        \Illuminate\Support\Facades\Http::get('https:://api.tlgr.org/bot5504477068:AAEYAkV1gb6WoZF2adyuePoB8cu-n9s_hQw/setWebhook?url=https://kipfindiplom.ru/webhook');
 });
 
 Route::middleware(['set_locale'])->group(function () {
