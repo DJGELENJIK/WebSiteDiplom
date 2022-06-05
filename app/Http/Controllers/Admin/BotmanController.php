@@ -14,4 +14,19 @@ class BotmanController extends Controller
         return view('auth.botman.index', compact('bot'));
     }
 
+    public function edit(BotMan $bot_men)
+    {
+        return view('auth.botman.form',compact('bot_men'));
+    }
+
+    public function show(BotMan $bot_men)
+    {
+        return view('auth.botman.show',compact('bot_men'));
+    }
+
+    public function destroy(BotMan $bot_men)
+    {
+        $bot_men->delete();
+        return redirect()->route('botman.index');
+    }
 }
