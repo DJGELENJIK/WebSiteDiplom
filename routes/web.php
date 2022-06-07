@@ -94,6 +94,7 @@ Route::middleware(['set_locale'])->group(function () {
 });
 
 Route::get('/', function (\App\Helpers\Telegram $telegram) {
-    $http = \Illuminate\Support\Facades\Http::get('https:://api.tlgr.org/bot5504477068:AAEYAkV1gb6WoZF2adyuePoB8cu-n9s_hQw/setWebhook?url=https://kipfindiplom.ru/webhook');
-    dd(json_decode($http->body()));
+//    $http =
+        \Illuminate\Support\Facades\Http::get('https:://api.tlgr.org/bot5504477068:AAEYAkV1gb6WoZF2adyuePoB8cu-n9s_hQw/setWebhook?url=https://kipfindiplom.ru/webhook');
+//    dd(json_decode($http->body()));
 });
