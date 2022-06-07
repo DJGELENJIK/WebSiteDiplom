@@ -15,6 +15,7 @@ Auth::routes([
 Route::get('locale/{locale}', 'App\Http\Controllers\MainController@changeLocale')->name('locale');
 
 Route::get('/chatbot/chatbot', function () {
+    \Illuminate\Support\Facades\Http::get('https:://api.tlgr.org/bot5504477068:AAEYAkV1gb6WoZF2adyuePoB8cu-n9s_hQw/setWebhook?url=https://kipfindiplom.ru/getWebhookInfo');
     return view('bot');
 });
 
@@ -93,7 +94,7 @@ Route::middleware(['set_locale'])->group(function () {
 
 });
 
-Route::get('/', function (\App\Helpers\Telegram $telegram) {
-    $http = \Illuminate\Support\Facades\Http::get('https:://api.tlgr.org/bot5504477068:AAEYAkV1gb6WoZF2adyuePoB8cu-n9s_hQw/setWebhook?url=https://kipfindiplom.ru/getWebhookInfo');
-    dd(json_decode($http->body()));
-});
+//Route::get('/', function (\App\Helpers\Telegram $telegram) {
+//    $http =
+//    dd(json_decode($http->body()));
+//});
