@@ -12,7 +12,7 @@ class WebhookController extends Controller
         Log::debug($request->all());
         $public = explode('|', $request->input('callback_query')['data'])[0];
         $secret_key = explode('|', $request->input('callback_query')['data'])[1];
-        $order = Order::where('secret_Key', $secret_key)->first();
+        $order = Order::where('phone', $secret_key)->first();
         $order->status = explode('|', $request->input('callback_query')['data'])[0];
         $order->save();
     }
