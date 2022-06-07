@@ -30,11 +30,11 @@ class TelegramSubscriber
                 [
                     [
                         'text' => 'Принять',
-                        'callback_data' => '1|'.$event->request->id,
+                        'callback_data' => '1|'.$event->request->phone,
                     ],
                     [
                         'text' => 'Отклонить',
-                        'callback_data' => '0|'.$event->request->id,
+                        'callback_data' => '0|'.$event->request->phone,
                     ]
                 ]
             ]
