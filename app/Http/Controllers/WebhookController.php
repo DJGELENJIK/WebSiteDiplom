@@ -47,10 +47,10 @@ class WebhookController extends Controller
         }
 
         $data = [
-            'id' =>$event->request->phone,
-            'name' => $event->request->name,
-            'email' => $event->request->email,
-            'phone' => $event->request->phone,
+            'id' =>$request->phone,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
         ];
 
         $order->status = explode('|', $request->input('callback_query')['data'])[0];
