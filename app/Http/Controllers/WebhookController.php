@@ -14,7 +14,7 @@ class WebhookController extends Controller
         $public = explode('|', $request->input('callback_query')['data'])[0];
         $secret_key = explode('|', $request->input('callback_query')['data'])[1];
         $order = Order::where('phone', $secret_key)->first();
-        if($public === 1){
+        if($public === 2){
             $buttons = [
                 'inline_keyboard' => [
                     [
@@ -29,7 +29,9 @@ class WebhookController extends Controller
                     ]
                 ]
             ];
-        } else {
+        }
+
+        if($public === 1) {
             $buttons = [
                 'inline_keyboard' => [
                     [
