@@ -28,9 +28,7 @@ Route::match(['get', 'post'], 'botman', [BotManController::class, 'handle']);
 Route::get('reset','App\Http\Controllers\ResetController@reset')->name('reset_db');
 
 Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('get-logout');
-Route::get('/', function (\App\Helpers\Telegram $telegram) {
-    \Illuminate\Support\Facades\Http::get('https:://api.tlgr.org/bot5504477068:AAEYAkV1gb6WoZF2adyuePoB8cu-n9s_hQw/setWebhook?url=https://kipfindiplom.ru/webhook');
-});
+
 Route::middleware(['set_locale'])->group(function () {
 
     Route::middleware(['auth'])->group(function () {
@@ -93,4 +91,9 @@ Route::middleware(['set_locale'])->group(function () {
         return view('ConfirmSearch')->withMessage("Ничего не найдено");
     });
 
+});
+
+Route::get('/', function (\App\Helpers\Telegram $telegram) {
+    $http = \Illuminate\Support\Facades\Http::get('https:://api.tlgr.org/bot5504477068:AAEYAkV1gb6WoZF2adyuePoB8cu-n9s_hQw/setWebhook?url=https://kipfindiplom.ru/webhook');
+    dd(json_decode($http->body()));
 });
