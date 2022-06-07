@@ -20,11 +20,11 @@ class WebhookController extends Controller
                     [
                         [
                             'text' => 'Принять ✅',
-                            'callback_data' => '1|'.$request->phone,
+                            'callback_data' => '2|'.$request->phone,
                         ],
                         [
                             'text' => 'Отклонить',
-                            'callback_data' => '0|'.$request->phone,
+                            'callback_data' => '1|'.$request->phone,
                         ]
                     ]
                 ]
@@ -37,11 +37,11 @@ class WebhookController extends Controller
                     [
                         [
                             'text' => 'Принять',
-                            'callback_data' => '1|'.$request->phone,
+                            'callback_data' => '2|'.$request->phone,
                         ],
                         [
                             'text' => 'Отклонить ✅',
-                            'callback_data' => '0|'.$request->phone,
+                            'callback_data' => '1|'.$request->phone,
                         ]
                     ]
                 ]
