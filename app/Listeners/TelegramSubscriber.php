@@ -19,10 +19,10 @@ class TelegramSubscriber
     public function orderStore($event)
     {
         $data = [
-            'id' =>$event->request->phone,
-            'name' => $event->request->name,
-            'email' => $event->request->email,
-            'phone' => $event->request->phone,
+            'id' =>$event->product->phone,
+            'name' => $event->product->name,
+            'email' => $event->product->email,
+            'phone' => $event->product->phone,
         ];
 
         $buttons = [
@@ -30,11 +30,11 @@ class TelegramSubscriber
                 [
                     [
                         'text' => 'Принять',
-                        'callback_data' => '1|'.$event->request->phone,
+                        'callback_data' => '1|'.$event->product->phone,
                     ],
                     [
                         'text' => 'Отклонить',
-                        'callback_data' => '0|'.$event->request->phone,
+                        'callback_data' => '0|'.$event->product->phone,
                     ]
                 ]
             ]
