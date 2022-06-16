@@ -24,14 +24,14 @@ class WebhookController extends Controller
                         ],
                         [
                             'text' => 'Отклонить',
-                            'callback_data' => '1|'.$request->phone,
+                            'callback_data' => '0|'.$request->phone,
                         ]
                     ]
                 ]
             ];
         }
 
-        if($public == 1) {
+        if($public == 0) {
             $buttons = [
                 'inline_keyboard' => [
                     [
@@ -41,7 +41,7 @@ class WebhookController extends Controller
                         ],
                         [
                             'text' => 'Отклонить ✅',
-                            'callback_data' => '1|'.$request->phone,
+                            'callback_data' => '0|'.$request->phone,
                         ]
                     ]
                 ]
