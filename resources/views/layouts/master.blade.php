@@ -35,7 +35,7 @@
         </div>
         <div class="collapse navbar-collapse" id="responsive-menu">
             <ul class="nav navbar-nav">
-                <li @routeactive('main')><a href="{{route('main')}}">ГЛАВНАЯ</a></li>
+                <li @routeactive('main')><a href="{{route('main')}}">@lang('main.home_page')</a></li>
                 <li @routeactive('index')><a href="{{route('index')}}">@lang('main.all_products')</a></li>
                 <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -99,7 +99,7 @@
 <footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6"><p>Категории товаров</p>
+            <div class="col-lg-6"><p>@lang('main.category')</p>
                 <ul>
 
                     @foreach($categories as $category)
