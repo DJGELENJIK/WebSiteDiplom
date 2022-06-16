@@ -49,7 +49,6 @@ class WebhookController extends Controller
         }
 
         $data = [
-            'id' =>$request->id,
             'name' => $request->name,
             'phone' => $request->phone,
         ];
