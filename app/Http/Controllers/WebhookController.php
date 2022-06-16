@@ -12,7 +12,7 @@ class WebhookController extends Controller
     public function index(Request $request, Telegram $telegram) {
         $public = explode('|', $request->input('callback_query')['data'])[0];
         $secret_key = explode('|', $request->input('callback_query')['data'])[1];
-        $order = Request::where('phone', $secret_key)->first();
+        $order = Order::where('phone', $secret_key)->first();
         if($public == 2){
             $buttons = [
                 'inline_keyboard' => [
