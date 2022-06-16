@@ -11,10 +11,10 @@
         {{ csrf_field() }}
         <div class="form-row">
             <div class="form-group col-md-10">
-                <input type="text" class="form-control" name="q" placeholder="Найти...">
+                <input type="text" class="form-control" name="q" placeholder="@lang('main.search')">
             </div>
             <div class="form-group col-md-2">
-                <button type="submit" class="btn btn-primary btn-block">Поиск</button>
+                <button type="submit" class="btn btn-primary btn-block">@lang('main.search')</button>
             </div>
         </div>
 
