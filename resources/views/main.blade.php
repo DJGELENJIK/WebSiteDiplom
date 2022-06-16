@@ -78,7 +78,7 @@
     </style>
 
     <div class="content">
-        <h2 class="title-text">Популярные товары</h2>
+        <h1>@lang('main.popular_product')</h1>
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
             @foreach ($bestProducts as $bestProduct)
@@ -93,39 +93,39 @@
 
     </div>
     <div class="content second">
-        <h2 class="title-text">Почему выбирают нас?</h2>
+        <h2 class="title-text">@lang('main.why_choose')</h2>
         <div class="gradles">
             <div class="gradles-elem">
             <img class="gradles-img" src="{{ asset('img/payment.svg') }}">
-            <p class="gradles-text">Оплата при доставке</p>
+            <p class="gradles-text">@lang('main.oplata')</p>
             </div>
             <div class="gradles-elem">
                 <img class="gradles-img" src="{{ asset('img/product.svg') }}">
-                <p class="gradles-text">Качественный товар</p>
+                <p class="gradles-text">@lang('main.kach')</p>
             </div>
             <div class="gradles-elem">
                 <img class="gradles-img" src="{{ asset('img/fast_delivery.svg') }}">
-                <p class="gradles-text">Быстрая доставка</p>
+                <p class="gradles-text">@lang('main.fast')</p>
             </div>
             <div class="gradles-elem">
                 <img class="gradles-img" src="{{ asset('img/clock.svg') }}">
-                <p class="gradles-text">Работаем 24/7</p>
+                <p class="gradles-text">@lang('main.work')</p>
             </div>
             <div class="gradles-elem">
                 <img class="gradles-img" src="{{ asset('img/fast_order.svg') }}">
-                <p class="gradles-text">Быстрое оформление заказа</p>
+                <p class="gradles-text">@lang('main.zakaz')</p>
             </div>
             <div class="gradles-elem">
                 <img class="gradles-img" src="{{ asset('img/respect.svg') }}">
-                <p class="gradles-text">Уважение к клиенту</p>
+                <p class="gradles-text">@lang('main.klient')</p>
             </div>
             <div class="gradles-elem">
                 <img class="gradles-img" src="{{ asset('img/return.svg') }}">
-                <p class="gradles-text">Возврат при браке</p>
+                <p class="gradles-text">@lang('main.brak')</p>
             </div>
             <div class="gradles-elem">
                 <img class="gradles-img" src="{{ asset('img/postav.svg') }}">
-                <p class="gradles-text">Известные поставщики</p>
+                <p class="gradles-text">@lang('main.post')</p>
             </div>
         </div>
     </div>
