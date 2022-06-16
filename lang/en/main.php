@@ -48,4 +48,5 @@ return [
     'klient'=>'Respect for the client',
     'brak'=>'Refund in case of marriage',
     'post'=>'Well-known suppliers',
+    'search'=>'Search'
 ];
