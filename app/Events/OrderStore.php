@@ -3,7 +3,6 @@
 namespace App\Events;
 
 use App\Http\Controllers\BasketController;
-use App\Models\Product;
 use Illuminate\Http\Request;
 
 
@@ -11,10 +10,10 @@ class OrderStore
 {
 
 
-    public $product;
+    public $request;
 
-    public function __construct(Product $product) {
-        $this->product = $product;
+    public function __construct(Request $request) {
+        $this->request = $request;
     }
 
 }
