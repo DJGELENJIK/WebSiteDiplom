@@ -28,7 +28,7 @@ class whereCart extends Conversation
                 if ($answer->getValue() === 'yes') {
                     $this->say('Хорошо! Если у вас будут ещё вопросы, обращайтесь!');
                 } else {
-                    $attachment = new Video('/videos/Korzina.mp4', [
+                    $attachment = new Video('/videos/korzina.mp4', [
                         'custom_payload' => true,
                     ]);
                     $message = OutgoingMessage::create('Вы можете посмотреть как пользоваться коризной в этом видео')
