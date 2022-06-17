@@ -39,7 +39,7 @@ class TelegramSubscriber
             ]
         ];
 
-        $this->telegram->sendButtons(env('ORDER_TELEGRAM_ID'), (string)view('telegramViews.OrderReport', $data), $buttons);
+        $this->telegram->sendButtons(env('ORDERS_TELEGRAM_ID'), (string)view('telegramViews.OrderReport', $data), $buttons);
 
     }
 
